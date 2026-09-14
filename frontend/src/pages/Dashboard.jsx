@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import API_URL from "../api";
 
 function Dashboard() {
   const [data, setData] = useState(null);
@@ -8,7 +9,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/dashboard");
+        const response = await fetch(`${API_URL}/api/dashboard`);
 
         if (!response.ok) {
           throw new Error("Failed to fetch dashboard data");
@@ -18,7 +19,7 @@ function Dashboard() {
         setData(result);
 
         const upcomingResponse = await fetch(
-          "http://localhost:5000/api/dashboard/upcoming"
+          `${API_URL}/api/dashboard/upcoming`
         );
         
         if (!upcomingResponse.ok) {

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { getShipmentStatus } from "../utils/shipmentStatus";
 import { useToast } from "../components/ToastContext";
+import API_URL from "../api";
 
 function formatDate(date) {
   if (!date) {
@@ -46,7 +47,7 @@ function Shipments() {
   const handleExport = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/shipments/export"
+        `${API_URL}/api/shipments/export`
       );
 
       if (!response.ok) {
@@ -75,7 +76,7 @@ function Shipments() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/shipments")
+    fetch(`${API_URL}/api/shipments`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch shipments");

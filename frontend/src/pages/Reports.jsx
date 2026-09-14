@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useToast } from "../components/ToastContext";
+import API_URL from "../api";
 
 function Reports() {
   const { showToast } = useToast();
@@ -43,7 +44,7 @@ function Reports() {
         }
 
         const summaryResponse = await fetch(
-          `http://localhost:5000/api/reports/summary?${params.toString()}`
+          `${API_URL}/api/reports/summary?${params.toString()}`
         );
 
         if (!summaryResponse.ok) {
@@ -55,7 +56,7 @@ function Reports() {
         setSummary(summaryData);
 
         const response = await fetch(
-          `http://localhost:5000/api/reports/agents?${params.toString()}`
+          `${API_URL}/api/reports/agents?${params.toString()}`
         );
 
         if (!response.ok) {
@@ -67,7 +68,7 @@ function Reports() {
         setAgents(data);
 
         const paymentResponse = await fetch(
-          `http://localhost:5000/api/reports/payments?${params.toString()}`
+          `${API_URL}/api/reports/payments?${params.toString()}`
         );
 
         if (!paymentResponse.ok) {
@@ -90,7 +91,7 @@ function Reports() {
     const fetchRecipients = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/report-recipients/active"
+          `${API_URL}/api/report-recipients/active`
         );
 
         if (!response.ok) {
@@ -140,7 +141,7 @@ function Reports() {
       }
   
       const response = await fetch(
-        `http://localhost:5000/api/reports/preview?${params.toString()}`
+        `${API_URL}/api/reports/preview?${params.toString()}`
       );
   
       if (!response.ok) {
@@ -173,7 +174,7 @@ function Reports() {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/reports/send?${params.toString()}`,
+        `${API_URL}/api/reports/send?${params.toString()}`,
         {
           method: "POST",
           headers: {

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useToast } from "../components/ToastContext";
+import API_URL from "../api";
 
 function formatDateForInput(date) {
   if (!date) {
@@ -46,7 +47,7 @@ function EditShipment() {
   const inputRefs = useRef([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/shipments/${id}`)
+    fetch(`${API_URL}/api/shipments/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch shipment");
@@ -198,7 +199,7 @@ function EditShipment() {
   
     try {
       const response = await fetch(
-        `http://localhost:5000/api/shipments/${id}`,
+        `${API_URL}/api/shipments/${id}`,
         {
           method: "PUT",
           headers: {

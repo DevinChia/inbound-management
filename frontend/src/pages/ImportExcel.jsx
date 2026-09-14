@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import API_URL from "../api";
 
 function ImportExcel() {
   const [file, setFile] = useState(null);
@@ -23,7 +24,7 @@ function ImportExcel() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/shipments/import",
+        `${API_URL}/api/shipments/import`,
         {
           method: "POST",
           body: formData,

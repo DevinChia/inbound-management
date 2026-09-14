@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useToast } from "../components/ToastContext";
+import API_URL from "../api";
 
 function Settings() {
   const { showToast } = useToast();
@@ -16,7 +17,7 @@ function Settings() {
     const fetchRecipients = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/report-recipients"
+          `${API_URL}/api/report-recipients`
         );
 
         if (!response.ok) {
@@ -39,7 +40,7 @@ function Settings() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/report-recipients",
+        `${API_URL}/api/report-recipients`,
         {
           method: "POST",
           headers: {
@@ -90,7 +91,7 @@ function Settings() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/report-recipients/${editingRecipient.id}`,
+        `${API_URL}/api/report-recipients/${editingRecipient.id}`,
         {
           method: "PUT",
           headers: {

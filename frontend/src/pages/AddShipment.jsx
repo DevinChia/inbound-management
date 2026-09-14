@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../components/ToastContext";
+import API_URL from "../api";
 
 function isValidDate(value) {
   if (!value) {
@@ -159,7 +160,7 @@ function AddShipment() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/shipments",
+        `${API_URL}/api/shipments`,
         {
           method: "POST",
           headers: {

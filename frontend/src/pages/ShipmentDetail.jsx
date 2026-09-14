@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useToast } from "../components/ToastContext";
 import { getShipmentStatus } from "../utils/shipmentStatus";
+import API_URL from "../api";
 
 function formatDate(date) {
   if (!date) {
@@ -41,7 +42,7 @@ function ShipmentDetail() {
   
     try {
       const response = await fetch(
-        `http://localhost:5000/api/shipments/${id}`,
+        `${API_URL}/api/shipments/${id}`,
         {
           method: "DELETE",
         }
@@ -63,7 +64,7 @@ function ShipmentDetail() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/shipments/${id}`)
+    fetch(`${API_URL}/api/shipments/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch shipment");
