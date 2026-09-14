@@ -1,0 +1,37 @@
+// Prisma schema for Inbound Management
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Shipment {
+  id                  Int      @id @default(autoincrement())
+  agent               String?
+  blNumber            String?
+  invoiceNumber       String?
+  vesselName          String?
+  containers          Int?
+  units               Int?
+  arrivalEstimation   DateTime? @db.Date
+  arrivalAtYard       DateTime? @db.Date
+  pibClearanceDate    DateTime? @db.Date
+  bm                  Decimal?
+  ppn                 Decimal?
+  pph                 Decimal?
+  totalPibPayment     Decimal?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model ReportRecipient {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

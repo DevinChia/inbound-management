@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Shipment" ALTER COLUMN "arrivalEstimation" SET DATA TYPE DATE,
+ALTER COLUMN "arrivalAtYard" SET DATA TYPE DATE,
+ALTER COLUMN "pibClearanceDate" SET DATA TYPE DATE;
