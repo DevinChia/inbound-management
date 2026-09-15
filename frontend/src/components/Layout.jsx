@@ -6,9 +6,9 @@ function Layout() {
 
   const navItems = [
     { name: "Dashboard", path: "/" },
+    { name: "Reports", path: "/reports" },
     { name: "Shipments", path: "/shipments" },
     { name: "Import Excel", path: "/import" },
-    { name: "Reports", path: "/reports" },
     { name: "Settings", path: "/settings" },
   ];
 
